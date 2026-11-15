@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<section class="result-wrap">
+  <div class="result-card reveal">
+    <span class="result-badge">{{ t('Crop recommendation') }}</span>
+    <h1>{{ crop_name(prediction) }} {{ t('looks like a good fit.') }}</h1>
+    <p class="result-copy">{{ t('Based on the soil and climate conditions you shared, this crop may be well suited to your field.') }}</p>
+    <div class="result-actions">
+      <a class="button" href="{{ url_for('crop_recommend') }}">{{ t('Check another field') }}</a>
+      <a class="button button-outline" href="{{ url_for('fertilizer_recommendation') }}">{{ t('Explore fertilizer advice') }}</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

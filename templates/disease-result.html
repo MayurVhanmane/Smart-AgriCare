@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<section class="result-wrap">
+  <div class="result-card reveal">
+    <span class="result-badge">{{ t('Plant health check') }}</span>
+    <h1>{{ t('Your leaf analysis is ready.') }}</h1>
+    <p class="result-copy">{{ t('The image analysis found the following result and suggested next steps.') }}</p>
+    <div class="result-content">{{ prediction }}</div>
+    <div class="result-actions">
+      <a class="button" href="{{ url_for('disease_prediction') }}">{{ t('Analyze another leaf') }}</a>
+      <a class="button button-outline" href="{{ url_for('home') }}">{{ t('Back to home') }}</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

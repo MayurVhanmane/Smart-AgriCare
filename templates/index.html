@@ -1,0 +1,64 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<section class="hero">
+  <div class="hero-inner">
+    <div class="reveal">
+      <span class="eyebrow">{{ t('Smarter decisions start here') }}</span>
+      <h1>{{ t('Grow with a little more confidence.') }}</h1>
+      <p class="hero-copy">{{ t('Get practical, data-informed guidance for your soil, your crops and the challenges in your field.') }}</p>
+      <div class="hero-actions">
+        <a class="button button-light" href="{{ url_for('crop_recommend') }}">{{ t('Explore crop advice') }} <span aria-hidden="true">&rarr;</span></a>
+        <a class="button" href="{{ url_for('disease_prediction') }}">{{ t('Check plant health') }}</a>
+      </div>
+    </div>
+    <aside class="hero-panel reveal" aria-label="{{ t('AgriCare tools') }}">
+      <span class="hero-panel-label">{{ t('Your field toolkit') }}</span>
+      <h2>{{ t('Three useful tools. One healthier growing season.') }}</h2>
+      <div class="hero-stat"><span>01 &nbsp; {{ t('Crop planning') }}</span><strong>{{ t('Find a fit') }}</strong></div>
+      <div class="hero-stat"><span>02 &nbsp; {{ t('Soil nutrients') }}</span><strong>{{ t('Balance inputs') }}</strong></div>
+      <div class="hero-stat"><span>03 &nbsp; {{ t('Plant health') }}</span><strong>{{ t('Spot issues') }}</strong></div>
+    </aside>
+  </div>
+</section>
+
+<section class="section" id="services">
+  <div class="section-heading">
+    <span class="eyebrow">{{ t('A better way to plan') }}</span>
+    <h2>{{ t('What would you like help with?') }}</h2>
+    <p>{{ t('Choose a tool to turn what you know about your farm into a helpful next step.') }}</p>
+  </div>
+  <div class="service-grid">
+    <a class="service-card" href="{{ url_for('crop_recommend') }}">
+      <span class="service-icon" aria-hidden="true">01</span>
+      <h3>{{ t('Crop recommendation') }}</h3>
+      <p>{{ t('Match your soil nutrients and growing conditions with a crop suited to your field.') }}</p>
+      <span class="card-link">{{ t('Plan your crop') }} <span aria-hidden="true">&rarr;</span></span>
+    </a>
+    <a class="service-card" href="{{ url_for('fertilizer_recommendation') }}">
+      <span class="service-icon" aria-hidden="true">02</span>
+      <h3>{{ t('Fertilizer guidance') }}</h3>
+      <p>{{ t('Compare your soil’s N-P-K values with crop needs to get a focused fertilizer suggestion.') }}</p>
+      <span class="card-link">{{ t('Check soil nutrients') }} <span aria-hidden="true">&rarr;</span></span>
+    </a>
+    <a class="service-card" href="{{ url_for('disease_prediction') }}">
+      <span class="service-icon" aria-hidden="true">03</span>
+      <h3>{{ t('Plant health check') }}</h3>
+      <p>{{ t('Upload a clear leaf photo to identify common crop diseases and see suggested next steps.') }}</p>
+      <span class="card-link">{{ t('Check a leaf') }} <span aria-hidden="true">&rarr;</span></span>
+    </a>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="about-panel">
+    <img class="about-image" src="{{ url_for('static', filename='images/core.jpg') }}" alt="{{ t('Healthy green crops growing in a field') }}">
+    <div>
+      <span class="eyebrow">{{ t('Technology with a purpose') }}</span>
+      <h2>{{ t('Built to support the work you do every day.') }}</h2>
+      <p>{{ t('Smart AgriCare brings machine-learning tools together to help you make informed decisions throughout the growing process—from choosing a crop to checking plant health.') }}</p>
+      <a class="card-link" href="{{ url_for('crop_recommend') }}">{{ t('Start with your soil') }} <span aria-hidden="true">&rarr;</span></a>
+    </div>
+  </div>
+</section>
+{% endblock %}

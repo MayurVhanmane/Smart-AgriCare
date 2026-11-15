@@ -1,0 +1,69 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<section class="page-intro">
+  <span class="eyebrow">{{ t('Crop planning') }}</span>
+  <h1>{{ t('Find a crop that fits your field.') }}</h1>
+  <p>{{ t('Enter the soil and climate values for your farm. We’ll use them to suggest a suitable crop.') }}</p>
+</section>
+<section class="form-wrap">
+  <div class="form-card reveal">
+    <div class="form-top">
+      <div>
+        <h2>{{ t('Your field conditions') }}</h2>
+        <p>{{ t('Fill in each value to get your recommendation.') }}</p>
+      </div>
+      <span class="progress-label"
+            data-progress-label
+            data-progress-format="{{ t('{completed} of {total} completed') }}"
+            data-progress-ready="{{ t('Ready to analyze') }}">{{ t('{completed} of {total} completed').replace('{completed}', '0').replace('{total}', '7') }}</span>
+    </div>
+    <div class="progress-track" role="progressbar" aria-label="{{ t('Form completion') }}" aria-valuemin="0" aria-valuemax="100">
+      <div class="progress-fill" data-progress></div>
+    </div>
+    <form method="POST" action="{{ url_for('crop_prediction') }}" data-progress-form>
+      <div class="form-grid">
+        <div class="field">
+          <label for="nitrogen">{{ t('Nitrogen (N)') }}</label>
+          <div class="input-wrap"><input type="number" id="nitrogen" name="nitrogen" placeholder="e.g. 90" required></div>
+          <span class="field-hint">{{ t('Soil nitrogen value') }}</span>
+        </div>
+        <div class="field">
+          <label for="phosphorous">{{ t('Phosphorus (P)') }}</label>
+          <div class="input-wrap"><input type="number" id="phosphorous" name="phosphorous" placeholder="e.g. 42" required></div>
+          <span class="field-hint">{{ t('Soil phosphorus value') }}</span>
+        </div>
+        <div class="field">
+          <label for="pottasium">{{ t('Potassium (K)') }}</label>
+          <div class="input-wrap"><input type="number" id="pottasium" name="pottasium" placeholder="e.g. 43" required></div>
+          <span class="field-hint">{{ t('Soil potassium value') }}</span>
+        </div>
+        <div class="field">
+          <label for="ph">{{ t('Soil pH') }}</label>
+          <div class="input-wrap"><input type="number" step="0.01" id="ph" name="ph" placeholder="e.g. 6.5" required></div>
+          <span class="field-hint">{{ t('Acidity or alkalinity level') }}</span>
+        </div>
+        <div class="field">
+          <label for="rainfall">{{ t('Rainfall (mm)') }}</label>
+          <div class="input-wrap"><input type="number" step="0.01" id="rainfall" name="rainfall" placeholder="e.g. 200" required></div>
+          <span class="field-hint">{{ t('Expected rainfall for the season') }}</span>
+        </div>
+        <div class="field">
+          <label for="temperature">{{ t('Temperature (°C)') }}</label>
+          <div class="input-wrap"><input type="number" step="0.01" id="temperature" name="temperature" placeholder="e.g. 25" required></div>
+          <span class="field-hint">{{ t('Average growing temperature') }}</span>
+        </div>
+        <div class="field">
+          <label for="humidity">{{ t('Humidity (%)') }}</label>
+          <div class="input-wrap"><input type="number" step="0.01" id="humidity" name="humidity" placeholder="e.g. 75" required></div>
+          <span class="field-hint">{{ t('Average relative humidity') }}</span>
+        </div>
+      </div>
+      <div class="form-actions">
+        <p class="form-note">{{ t('Your values are used to generate a crop suggestion.') }}</p>
+        <button class="button form-submit" type="submit">{{ t('Get crop advice') }} <span aria-hidden="true">&rarr;</span></button>
+      </div>
+    </form>
+  </div>
+</section>
+{% endblock %}

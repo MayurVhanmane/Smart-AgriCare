@@ -1,0 +1,80 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<section class="page-intro">
+  <span class="eyebrow">{{ t('Soil nutrition') }}</span>
+  <h1>{{ t('Give your crop the nutrients it needs.') }}</h1>
+  <p>{{ t('Share your current soil N-P-K values and crop choice for a tailored fertilizer suggestion.') }}</p>
+</section>
+<section class="form-wrap">
+  <div class="form-card reveal">
+    <div class="form-top">
+      <div>
+        <h2>{{ t('Your soil and crop') }}</h2>
+        <p>{{ t('Enter your soil test values and the crop you plan to grow.') }}</p>
+      </div>
+      <span class="progress-label"
+            data-progress-label
+            data-progress-format="{{ t('{completed} of {total} completed') }}"
+            data-progress-ready="{{ t('Ready to analyze') }}">{{ t('{completed} of {total} completed').replace('{completed}', '0').replace('{total}', '4') }}</span>
+    </div>
+    <div class="progress-track" role="progressbar" aria-label="{{ t('Form completion') }}" aria-valuemin="0" aria-valuemax="100">
+      <div class="progress-fill" data-progress></div>
+    </div>
+    <form method="POST" action="{{ url_for('fert_recommend') }}" data-progress-form>
+      <div class="form-grid">
+        <div class="field">
+          <label for="nitrogen">{{ t('Nitrogen (N)') }}</label>
+          <div class="input-wrap"><input type="number" id="nitrogen" name="nitrogen" placeholder="e.g. 50" required></div>
+          <span class="field-hint">{{ t('Current soil nitrogen value') }}</span>
+        </div>
+        <div class="field">
+          <label for="phosphorous">{{ t('Phosphorus (P)') }}</label>
+          <div class="input-wrap"><input type="number" id="phosphorous" name="phosphorous" placeholder="e.g. 50" required></div>
+          <span class="field-hint">{{ t('Current soil phosphorus value') }}</span>
+        </div>
+        <div class="field">
+          <label for="pottasium">{{ t('Potassium (K)') }}</label>
+          <div class="input-wrap"><input type="number" id="pottasium" name="pottasium" placeholder="e.g. 50" required></div>
+          <span class="field-hint">{{ t('Current soil potassium value') }}</span>
+        </div>
+        <div class="field">
+          <label for="crop">{{ t('Crop you plan to grow') }}</label>
+          <div class="input-wrap">
+            <select id="crop" name="cropname" required>
+              <option value="" selected disabled>{{ t('Select a crop') }}</option>
+              <option value="rice">{{ t('Rice') }}</option>
+              <option value="maize">{{ t('Maize') }}</option>
+              <option value="chickpea">{{ t('Chickpea') }}</option>
+              <option value="kidneybeans">{{ t('Kidney beans') }}</option>
+              <option value="pigeonpeas">{{ t('Pigeon peas') }}</option>
+              <option value="mothbeans">{{ t('Moth beans') }}</option>
+              <option value="mungbean">{{ t('Mung bean') }}</option>
+              <option value="blackgram">{{ t('Black gram') }}</option>
+              <option value="lentil">{{ t('Lentil') }}</option>
+              <option value="pomegranate">{{ t('Pomegranate') }}</option>
+              <option value="banana">{{ t('Banana') }}</option>
+              <option value="mango">{{ t('Mango') }}</option>
+              <option value="grapes">{{ t('Grapes') }}</option>
+              <option value="watermelon">{{ t('Watermelon') }}</option>
+              <option value="muskmelon">{{ t('Muskmelon') }}</option>
+              <option value="apple">{{ t('Apple') }}</option>
+              <option value="orange">{{ t('Orange') }}</option>
+              <option value="papaya">{{ t('Papaya') }}</option>
+              <option value="coconut">{{ t('Coconut') }}</option>
+              <option value="cotton">{{ t('Cotton') }}</option>
+              <option value="jute">{{ t('Jute') }}</option>
+              <option value="coffee">{{ t('Coffee') }}</option>
+            </select>
+          </div>
+          <span class="field-hint">{{ t('Choose the crop from your plan') }}</span>
+        </div>
+      </div>
+      <div class="form-actions">
+        <p class="form-note">{{ t('Use values from a recent soil test for best results.') }}</p>
+        <button class="button form-submit" type="submit">{{ t('Get fertilizer advice') }} <span aria-hidden="true">&rarr;</span></button>
+      </div>
+    </form>
+  </div>
+</section>
+{% endblock %}

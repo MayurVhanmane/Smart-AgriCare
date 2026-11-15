@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<section class="result-wrap">
+  <div class="result-card reveal">
+    <span class="result-badge">{{ t('Let’s try that again') }}</span>
+    <h1>{{ t('We couldn’t process that request.') }}</h1>
+    <p class="result-copy">{{ t('Please review your field details and try again.') }}</p>
+    <div class="result-actions">
+      <a class="button" href="{{ url_for('crop_recommend') }}">{{ t('Return to crop advice') }}</a>
+      <a class="button button-outline" href="{{ url_for('home') }}">{{ t('Back to home') }}</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

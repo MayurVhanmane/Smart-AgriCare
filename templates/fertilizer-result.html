@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<section class="result-wrap">
+  <div class="result-card reveal">
+    <span class="result-badge">{{ t('Fertilizer guidance') }}</span>
+    <h1>{{ t('A nutrient plan for your soil.') }}</h1>
+    <p class="result-copy">{{ t('Here’s a suggestion based on the crop you selected and your current N-P-K values.') }}</p>
+    <div class="result-content">{{ recommendation }}</div>
+    <div class="result-actions">
+      <a class="button" href="{{ url_for('fertilizer_recommendation') }}">{{ t('Check another soil sample') }}</a>
+      <a class="button button-outline" href="{{ url_for('home') }}">{{ t('Back to home') }}</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

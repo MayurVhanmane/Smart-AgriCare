@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<section class="page-intro">
+  <span class="eyebrow">{{ t('Plant health') }}</span>
+  <h1>{{ t('Let’s take a closer look at that leaf.') }}</h1>
+  <p>{{ t('Upload a clear photo of a single affected leaf to check for common crop diseases.') }}</p>
+</section>
+<section class="form-wrap">
+  <div class="form-card reveal">
+    <div class="form-top">
+      <div>
+        <h2>{{ t('Upload a leaf photo') }}</h2>
+        <p>{{ t('Use a well-lit image with the leaf in focus.') }}</p>
+      </div>
+      <span class="progress-label">{{ t('Image analysis') }}</span>
+    </div>
+    <form method="post" enctype="multipart/form-data">
+      <label class="upload-zone" for="inputfile" data-upload-zone>
+        <span class="upload-symbol" aria-hidden="true">&#8593;</span>
+        <strong>{{ t('Choose an image or drag it here') }}</strong>
+        <span>{{ t('JPG, PNG or another common image format') }}</span>
+      </label>
+      <input type="file" name="file" id="inputfile" class="file-input" accept="image/*" required data-image-input>
+      <div class="preview-frame" data-image-preview>
+        <img src="" alt="{{ t('Preview of the selected leaf') }}" data-preview-image>
+        <p class="preview-name" data-preview-name></p>
+      </div>
+      <div class="form-actions">
+        <p class="form-note">{{ t('A close, clear leaf photo usually gives the best result.') }}</p>
+        <button class="button form-submit" type="submit">{{ t('Analyze plant') }} <span aria-hidden="true">&rarr;</span></button>
+      </div>
+    </form>
+  </div>
+</section>
+{% endblock %}
